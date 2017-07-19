@@ -5,8 +5,10 @@ public class PercolationStats {
 
 	private final int trials;
 	private double[] result;
-	private boolean flag = false;
+	private boolean meanFlag = false;
 	private double mean;
+	private boolean stddevFlag = false;
+	private double stddev;
 	private final int n;
 
 	public PercolationStats(int n, int trials) {
@@ -19,7 +21,7 @@ public class PercolationStats {
 	}
 
 	public double mean() {
-		if (flag) {
+		if (meanFlag) {
 			return mean;
 		}
 		Percolation grid = null;
@@ -31,13 +33,19 @@ public class PercolationStats {
 			result[i] = (double) grid.numberOfOpenSites() / (n * n);
 		}
 		mean = StdStats.mean(result);
-		flag = true;
+		meanFlag = true;
 		return mean;
 	}
 
 	public double stddev() {
 		mean();
-		return StdStats.stddev(result);
+		if (stddevFlag) {
+			return stddev;
+		} else {
+			stddevFlag = true;
+			stddev = StdStats.stddev(result);
+			return stddev;
+		}
 	}
 
 	public double confidenceLo() {

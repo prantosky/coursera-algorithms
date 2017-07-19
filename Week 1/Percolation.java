@@ -1,9 +1,10 @@
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
+
 	private final boolean[][] map;
 	private final WeightedQuickUnionUF grid;
-	private final WeightedQuickUnionUF grid_without_bottom;
+	private final WeightedQuickUnionUF gridWithoutBottom;
 	private int closedSites;
 	private final int n;
 
@@ -15,7 +16,7 @@ public class Percolation {
 		closedSites = n * n;
 		this.n = n;
 		grid = new WeightedQuickUnionUF(n * n + 2);
-		grid_without_bottom = new WeightedQuickUnionUF(n * n + 1);
+		gridWithoutBottom = new WeightedQuickUnionUF(n * n + 1);
 	}
 
 	public void open(int row, int col) {
@@ -29,23 +30,23 @@ public class Percolation {
 		closedSites--;
 		if (row - 1 > 0 && isOpen(row - 1, col)) {
 			grid.union(map(row, col), map(row - 1, col));
-			grid_without_bottom.union(map(row, col), map(row - 1, col));
+			gridWithoutBottom.union(map(row, col), map(row - 1, col));
 		}
 		if (row + 1 <= n && isOpen(row + 1, col)) {
 			grid.union(map(row, col), map(row + 1, col));
-			grid_without_bottom.union(map(row, col), map(row + 1, col));
+			gridWithoutBottom.union(map(row, col), map(row + 1, col));
 		}
 		if (col - 1 > 0 && isOpen(row, col - 1)) {
 			grid.union(map(row, col), map(row, col - 1));
-			grid_without_bottom.union(map(row, col), map(row, col - 1));
+			gridWithoutBottom.union(map(row, col), map(row, col - 1));
 		}
 		if (col + 1 <= n && isOpen(row, col + 1)) {
 			grid.union(map(row, col), map(row, col + 1));
-			grid_without_bottom.union(map(row, col), map(row, col + 1));
+			gridWithoutBottom.union(map(row, col), map(row, col + 1));
 		}
 		if (row == 1) {
 			grid.union(0, map(row, col));
-			grid_without_bottom.union(0, map(row, col));
+			gridWithoutBottom.union(0, map(row, col));
 		}
 		if (row == n) {
 			grid.union(n * n + 1, map(row, col));
@@ -63,7 +64,7 @@ public class Percolation {
 		if (row < 1 || row > n || col < 1 || col > n) {
 			throw new IllegalArgumentException();
 		}
-		return grid_without_bottom.connected(0, map(row, col));
+		return gridWithoutBottom.connected(0, map(row, col));
 	}
 
 	public int numberOfOpenSites() {
