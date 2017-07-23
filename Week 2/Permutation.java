@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.StdOut;
 public class Permutation {
 	private static RandomizedQueue<String> queue = null;
 
-	public static void initialise() {
+	private static void initialise() {
 		queue = new RandomizedQueue<>();
 	}
 
