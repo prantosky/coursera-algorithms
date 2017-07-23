@@ -2,7 +2,7 @@ import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 public class Permutation {
-	RandomizedQueue<String> queue = null;
+	private RandomizedQueue<String> queue = null;
 
 	public Permutation() {
 		queue = new RandomizedQueue<>();

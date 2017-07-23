@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.StdRandom;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
-	Item[] array;
+	private Item[] array;
 	private int size;
 
 	private class RandomIterator implements Iterator<Item> {
