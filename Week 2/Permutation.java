@@ -2,20 +2,20 @@ import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 public class Permutation {
-	private RandomizedQueue<String> queue = null;
+	private static RandomizedQueue<String> queue = null;
 
-	public Permutation() {
+	public static void initialise() {
 		queue = new RandomizedQueue<>();
 	}
 
 	public static void main(String[] args) {
 		int num = Integer.parseInt(args[0]);
-		Permutation permutation = new Permutation();
+		initialise();
 		while (StdIn.isEmpty()) {
-			permutation.queue.enqueue(StdIn.readString());
+			Permutation.queue.enqueue(StdIn.readString());
 		}
 		for (int i = 0; i < num; i++) {
-			StdOut.println(permutation.queue.dequeue());
+			StdOut.println(Permutation.queue.dequeue());
 		}
 
 	}

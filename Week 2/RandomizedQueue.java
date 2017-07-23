@@ -9,8 +9,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
 	private class RandomIterator implements Iterator<Item> {
 
-		int[] indexes;
-		int indexesSize;
+		private int[] indexes;
+		private int indexesSize;
 
 		public RandomIterator() {
 			indexes = new int[size];
