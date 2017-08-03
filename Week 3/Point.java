@@ -1,3 +1,5 @@
+package week3;
+
 import java.util.Comparator;
 import edu.princeton.cs.algs4.StdDraw;
 
@@ -26,7 +28,7 @@ public class Point implements Comparable<Point> {
 			return Double.NEGATIVE_INFINITY;
 		if (diffX == 0)
 			return Double.POSITIVE_INFINITY;
-		return diffY / diffX;
+		return (double) diffY / diffX;
 	}
 
 	public int compareTo(Point that) {
@@ -46,7 +48,7 @@ public class Point implements Comparable<Point> {
 
 			@Override
 			public int compare(Point o1, Point o2) {
-				double diffSlope = slopeTo(o1)-slopeTo(o2);
+				double diffSlope = slopeTo(o1) - slopeTo(o2);
 				if (diffSlope < 0) {
 					return -1;
 				} else if (diffSlope > 0) {
