@@ -26,6 +26,8 @@ public class Point implements Comparable<Point> {
 			return Double.NEGATIVE_INFINITY;
 		if (diffX == 0)
 			return Double.POSITIVE_INFINITY;
+		if (diffY == 0)
+			return 0.0;
 		return (double) diffY / diffX;
 	}
 
