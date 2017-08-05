@@ -19,7 +19,7 @@ public class FastCollinearPoints {
 				throw new IllegalArgumentException();
 			}
 		}
-		this.points = points;
+		this.points = points.clone();
 	}
 
 	public int numberOfSegments() {
