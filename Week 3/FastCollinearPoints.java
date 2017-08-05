@@ -9,7 +9,7 @@ public class FastCollinearPoints {
 	private final Point[] points;
 	private int numberOfSegments = 0;
 
-	FastCollinearPoints(Point[] points) {
+	public FastCollinearPoints(Point[] points) {
 		if (points == null) {
 			throw new IllegalArgumentException();
 		}
