@@ -13,8 +13,15 @@ public class BruteCollinearPoints {
 		if (points == null) {
 			throw new IllegalArgumentException();
 		}
-		for (int i = 0; i < points.length; i++) {
+		int length = points.length;
+		for (int i = 0; i < length; i++) {
 			if (points[i] == null) {
+				throw new IllegalArgumentException();
+			}
+		}
+		Arrays.sort(points);
+		for (int i = 0; i < length - 1; i++) {
+			if (points[i].slopeTo(points[i + 1]) == Double.NEGATIVE_INFINITY) {
 				throw new IllegalArgumentException();
 			}
 		}
@@ -32,12 +39,12 @@ public class BruteCollinearPoints {
 		for (int i = 0; i < length - 3; i++) {
 			for (int j = i + 1; j < length - 2; j++) {
 				for (int k = j + 1; k < length - 1; k++) {
-					if (points[i].slopeTo(points[j]) != points[i].slopeTo(points[k])) {
+					if (Double.compare(points[i].slopeTo(points[j]), points[i].slopeTo(points[k])) != 0) {
 						continue;
 					}
-					for (int l = k + 1; l < length; l++) {
-						if (points[i].slopeTo(points[l]) == points[i].slopeTo(points[k])) {
-							lineSegments.addElement(new LineSegment(points[i], points[l]));
+					for (int x = k + 1; x < length; x++) {
+						if (Double.compare(points[i].slopeTo(points[x]), points[i].slopeTo(points[k])) == 0) {
+							lineSegments.addElement(new LineSegment(points[i], points[x]));
 							numberOfSegments++;
 						}
 					}
