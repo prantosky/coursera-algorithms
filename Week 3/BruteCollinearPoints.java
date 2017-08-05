@@ -1,5 +1,3 @@
-package week3;
-
 import java.util.Arrays;
 import java.util.Vector;
 import edu.princeton.cs.algs4.In;
@@ -9,7 +7,7 @@ import edu.princeton.cs.algs4.StdOut;
 public class BruteCollinearPoints {
 
 	private final Point[] points;
-	private int numberOfSegements = 0;
+	private int numberOfSegments = 0;
 
 	public BruteCollinearPoints(Point[] points) {
 		if (points == null) {
@@ -24,7 +22,7 @@ public class BruteCollinearPoints {
 	}
 
 	public int numberOfSegments() {
-		return numberOfSegements;
+		return numberOfSegments;
 	}
 
 	public LineSegment[] segments() {
@@ -40,7 +38,7 @@ public class BruteCollinearPoints {
 					for (int l = k + 1; l < length; l++) {
 						if (points[i].slopeTo(points[l]) == points[i].slopeTo(points[k])) {
 							lineSegments.addElement(new LineSegment(points[i], points[l]));
-							numberOfSegements++;
+							numberOfSegments++;
 						}
 					}
 				}
@@ -75,7 +73,6 @@ public class BruteCollinearPoints {
 			StdOut.println(segment);
 			segment.draw();
 		}
-		System.out.println("Number of required lines : " + collinear.numberOfSegements);
 		StdDraw.show();
 	}
 }
