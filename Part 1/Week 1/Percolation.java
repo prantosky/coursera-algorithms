@@ -8,7 +8,7 @@ public class Percolation {
 	private int closedSites;
 	private final int n;
 
-	public Percolation(int n) {
+	public Percolation(int n) {	
 		if (n <= 0) {
 			throw new IllegalArgumentException();
 		}
